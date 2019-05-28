@@ -1,0 +1,11 @@
+G:\desktop\engineering\2019 MAY\algointocodes\Merge Sort\Merge Sort\bin\Debug\netcoreapp2.2\Merge Sort.deps.json
+G:\desktop\engineering\2019 MAY\algointocodes\Merge Sort\Merge Sort\bin\Debug\netcoreapp2.2\Merge Sort.runtimeconfig.json
+G:\desktop\engineering\2019 MAY\algointocodes\Merge Sort\Merge Sort\bin\Debug\netcoreapp2.2\Merge Sort.runtimeconfig.dev.json
+G:\desktop\engineering\2019 MAY\algointocodes\Merge Sort\Merge Sort\bin\Debug\netcoreapp2.2\Merge Sort.dll
+G:\desktop\engineering\2019 MAY\algointocodes\Merge Sort\Merge Sort\bin\Debug\netcoreapp2.2\Merge Sort.pdb
+G:\desktop\engineering\2019 MAY\algointocodes\Merge Sort\Merge Sort\obj\Debug\netcoreapp2.2\Merge Sort.csprojAssemblyReference.cache
+G:\desktop\engineering\2019 MAY\algointocodes\Merge Sort\Merge Sort\obj\Debug\netcoreapp2.2\Merge Sort.csproj.CoreCompileInputs.cache
+G:\desktop\engineering\2019 MAY\algointocodes\Merge Sort\Merge Sort\obj\Debug\netcoreapp2.2\Merge Sort.AssemblyInfoInputs.cache
+G:\desktop\engineering\2019 MAY\algointocodes\Merge Sort\Merge Sort\obj\Debug\netcoreapp2.2\Merge Sort.AssemblyInfo.cs
+G:\desktop\engineering\2019 MAY\algointocodes\Merge Sort\Merge Sort\obj\Debug\netcoreapp2.2\Merge Sort.dll
+G:\desktop\engineering\2019 MAY\algointocodes\Merge Sort\Merge Sort\obj\Debug\netcoreapp2.2\Merge Sort.pdb
