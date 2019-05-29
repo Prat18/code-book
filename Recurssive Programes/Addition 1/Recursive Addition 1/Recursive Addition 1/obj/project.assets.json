@@ -692,11 +692,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\desktop\\engineering\\2019 MAY\\codebook\\Sorting Programmes\\Merge Sort\\Merge Sort\\Merge Sort.csproj",
-      "projectName": "Merge Sort",
-      "projectPath": "G:\\desktop\\engineering\\2019 MAY\\codebook\\Sorting Programmes\\Merge Sort\\Merge Sort\\Merge Sort.csproj",
+      "projectUniqueName": "G:\\desktop\\engineering\\2019 MAY\\codebook\\Recurssive Programmes\\Addition 1\\Recursive Addition 1\\Recursive Addition 1\\Recursive Addition 1.csproj",
+      "projectName": "Recursive Addition 1",
+      "projectPath": "G:\\desktop\\engineering\\2019 MAY\\codebook\\Recurssive Programmes\\Addition 1\\Recursive Addition 1\\Recursive Addition 1\\Recursive Addition 1.csproj",
       "packagesPath": "C:\\Users\\Prat__18.PRATYUSH\\.nuget\\packages\\",
-      "outputPath": "G:\\desktop\\engineering\\2019 MAY\\codebook\\Sorting Programmes\\Merge Sort\\Merge Sort\\obj\\",
+      "outputPath": "G:\\desktop\\engineering\\2019 MAY\\codebook\\Recurssive Programmes\\Addition 1\\Recursive Addition 1\\Recursive Addition 1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
