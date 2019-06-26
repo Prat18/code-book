@@ -1,0 +1,11 @@
+G:\desktop\engineering\2019 MAY\codebook\Recursive Programs\Addition 2\Recursive Addition 2\bin\Debug\netcoreapp2.2\Recursive Addition 2.deps.json
+G:\desktop\engineering\2019 MAY\codebook\Recursive Programs\Addition 2\Recursive Addition 2\bin\Debug\netcoreapp2.2\Recursive Addition 2.runtimeconfig.json
+G:\desktop\engineering\2019 MAY\codebook\Recursive Programs\Addition 2\Recursive Addition 2\bin\Debug\netcoreapp2.2\Recursive Addition 2.runtimeconfig.dev.json
+G:\desktop\engineering\2019 MAY\codebook\Recursive Programs\Addition 2\Recursive Addition 2\bin\Debug\netcoreapp2.2\Recursive Addition 2.dll
+G:\desktop\engineering\2019 MAY\codebook\Recursive Programs\Addition 2\Recursive Addition 2\bin\Debug\netcoreapp2.2\Recursive Addition 2.pdb
+G:\desktop\engineering\2019 MAY\codebook\Recursive Programs\Addition 2\Recursive Addition 2\obj\Debug\netcoreapp2.2\Recursive Addition 2.csprojAssemblyReference.cache
+G:\desktop\engineering\2019 MAY\codebook\Recursive Programs\Addition 2\Recursive Addition 2\obj\Debug\netcoreapp2.2\Recursive Addition 2.csproj.CoreCompileInputs.cache
+G:\desktop\engineering\2019 MAY\codebook\Recursive Programs\Addition 2\Recursive Addition 2\obj\Debug\netcoreapp2.2\Recursive Addition 2.AssemblyInfoInputs.cache
+G:\desktop\engineering\2019 MAY\codebook\Recursive Programs\Addition 2\Recursive Addition 2\obj\Debug\netcoreapp2.2\Recursive Addition 2.AssemblyInfo.cs
+G:\desktop\engineering\2019 MAY\codebook\Recursive Programs\Addition 2\Recursive Addition 2\obj\Debug\netcoreapp2.2\Recursive Addition 2.dll
+G:\desktop\engineering\2019 MAY\codebook\Recursive Programs\Addition 2\Recursive Addition 2\obj\Debug\netcoreapp2.2\Recursive Addition 2.pdb
