@@ -1,1 +1,1 @@
-ALL ALGORITHMS ARE CODED IN C#.
+All algorithms are programmed in C#.
