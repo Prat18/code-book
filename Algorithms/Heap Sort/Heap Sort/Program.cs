@@ -4,12 +4,9 @@ namespace Heap_Sort
 {
     class Program
     {
-        private static int[] array;
-        public static int[] Array
-        {
-            get { return array; }
-            set { array = value; }
-        }
+        public static int[] Array { get; set; }
+        public static int HeapSize { get; set; }
+
         public class Heap
         {
             public int Parent(int i)
@@ -33,16 +30,16 @@ namespace Heap_Sort
                 int r = Right(i);
                 int largest, temp;
 
-                if (l < array.Length && array[l] > array[i]) largest = l;
+                if (l < HeapSize && Array[l] > Array[i]) largest = l;
                 else largest = i;
 
-                if (r < array.Length && array[r] > array[largest]) largest = r;
+                if (r < HeapSize && Array[r] > Array[largest]) largest = r;
 
                 if (i != largest)
                 {
-                    temp = array[largest];
-                    array[largest] = array[i];
-                    array[i] = temp;
+                    temp = Array[largest];
+                    Array[largest] = Array[i];
+                    Array[i] = temp;
 
                     MAX_HEAPIFY(largest);
                 }
@@ -50,7 +47,8 @@ namespace Heap_Sort
 
             public void BUILD_MAX_HEAP()
             {
-                for (int i = (array.Length / 2) - 1; i >= 0; i--)
+                HeapSize = Array.Length;
+                for (int i = (Array.Length / 2) - 1; i >= 0; i--)
                 {
                     MAX_HEAPIFY(i);
                 }
@@ -58,21 +56,23 @@ namespace Heap_Sort
 
             public void HEAPSORT()
             {
+                int temp;
                 BUILD_MAX_HEAP();
-                int heapsize = array.Length;
-                for(int i = array.Length - 1; i >= 1; i--)
+                for(int i = Array.Length - 1; i >= 1; i--)
                 {
-                    array[1] = array[i];
-                    heapsize = heapsize - 1;
+                    temp = Array[i];
+                    Array[i] = Array[0];
+                    Array[0] = temp;
+                    HeapSize = HeapSize - 2;
                     MAX_HEAPIFY(0);
                 }
             }
 
             public void PRINT_ARRAY()
             {
-                for (int i = 0; i < Program.array.Length; i++)
+                for (int i = 0; i < Program.Array.Length; i++)
                 {
-                    Console.WriteLine(Program.array[i]);
+                    Console.WriteLine(Program.Array[i]);
                 }
             }
 
@@ -81,19 +81,49 @@ namespace Heap_Sort
 
             }
 
-            public void HEAP_EXTRACT_MAX()
+            public int HEAP_EXTRACT_MAX()
             {
+                BUILD_MAX_HEAP();
+
+                if (HeapSize < 1)
+                {
+                    Console.WriteLine("Error: Heap underflow");
+                    return 0;
+                }
+
+                int max = Array[0];
+                Array[0] = Array[HeapSize - 1];
+                HeapSize -= 1;
+                MAX_HEAPIFY(0);
+                return max;
 
             }
 
-            public void HEAP_INCREASE_KEY()
+            public void HEAP_INCREASE_KEY(int i, int key)
             {
+                int temp;
 
+                if (key < Array[i])
+                {
+                    Console.WriteLine("Error: New key is smaller than current key.");
+                    return;
+                }
+
+                Array[i] = key;
+
+                while (i > 0 && Array[Parent(i)] < Array[i])
+                {
+                    temp = Array[i];
+                    Array[i] = Array[Parent(i)];
+                    Array[Parent(i)] = temp;
+                    i = Parent(i);
+                }
             }
 
-            public void HEAP_MAXIMUM()
+            public int HEAP_MAXIMUM()
             {
-
+                BUILD_MAX_HEAP();
+                return Array[0];
             }
         }
 
@@ -112,12 +142,13 @@ namespace Heap_Sort
             }
 
             Heap H = new Heap();
-            Program.array = array;
+            Program.Array = array;
 
             while (true)
             {
-                Console.WriteLine("Enter your choice: \n1. MAX-HEAPIFY\n2. BUILD-MAX-HEAP\n3. HEAPSORT\n4. MAX-HEAP-INSERT\n5. HEAP-EXTRACT-MAX\n6. HEAP-INCREASE-KEY\n7. HEAP-MAXIMUM\n8. PRINT-ARRAY\n9. EXIT");
+                Console.WriteLine("\n\nEnter your choice: \n1. MAX-HEAPIFY\n2. BUILD-MAX-HEAP\n3. HEAPSORT\n4. MAX-HEAP-INSERT\n5. HEAP-EXTRACT-MAX\n6. HEAP-INCREASE-KEY\n7. HEAP-MAXIMUM\n8. PRINT-ARRAY\n9. EXIT\n\n");
                 int choice = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine();
 
                 if (choice == 1)
                 {
@@ -145,19 +176,29 @@ namespace Heap_Sort
                 }
                 else if (choice == 5)
                 {
-
+                    int heapExtractMax = H.HEAP_EXTRACT_MAX();
+                    Console.WriteLine("Maximum extracted element from heap: " + heapExtractMax);
                 }
                 else if (choice == 6)
                 {
+                    Console.Write("Enter the index number: ");
+                    int i = Convert.ToInt32(Console.ReadLine());
+                    Console.Write("\nEnter the value of new key: ");
+                    int key = Convert.ToInt32(Console.ReadLine());
 
+                    H.HEAP_INCREASE_KEY(i,key);
+
+                    Console.WriteLine("Array after Heap-Increase-Key procedure: ");
+                    H.PRINT_ARRAY();
                 }
                 else if (choice == 7)
                 {
-
+                    int heapMax = H.HEAP_MAXIMUM();
+                    Console.WriteLine("The maximum element of heap: " + heapMax);
                 }
                 else if (choice == 8)
                 {
-                    Console.Write("Array: ");
+                    Console.WriteLine("Array: ");
                     H.PRINT_ARRAY();
                 }
                 else if(choice == 9)
