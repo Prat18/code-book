@@ -12,9 +12,10 @@ namespace Quick_Sort
             {
                 int q;
 
-                if(p < r)
+                if (p < r)
                 {
                     q = Partition(p, r);
+                    Console.WriteLine("pivot index: " + q);
                     QuickSort(p, q - 1);
                     QuickSort(q + 1, r);
                 }
@@ -24,49 +25,59 @@ namespace Quick_Sort
             {
                 int x = Array[r];
                 int i = p - 1;
-                int temp;
 
-                for(int j = p; j < r-1; j++)
+                for (int j = p; j < r; j++)
                 {
-                    if(Array[j] <= x)
+                    if (Array[j] <= x)
                     {
                         i += 1;
-                        temp = Array[i];
-                        Array[i] = Array[j];
-                        Array[j] = temp;
+                        Swap(i, j);
                     }
                 }
-                temp = Array[i + 1];
-                Array[i + 1] = Array[r];
-                Array[r] = temp;
+                Swap(i + 1, r);
+                PrintArray();
+                Console.WriteLine("; Returns: " + (i + 1));
                 return i + 1;
             }
-        }
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Enter the size of the array: ");
-            int n = Convert.ToInt32(Console.ReadLine());
 
-            int[] array = new int[n];
-
-            Console.WriteLine("Enter the elements of the array: ");
-            for(int i = 0; i < n; i++)
+            public void Swap(int i, int j)
             {
-                array[i] = Convert.ToInt32(Console.ReadLine());
+                int temp;
+
+                temp = Array[i];
+                Array[i] = Array[j];
+                Array[j] = temp;
             }
 
-            Array = array;
-
-            ClassQuickSort q = new ClassQuickSort();
-            q.QuickSort(0, Array.Length - 1);
-
-            Console.WriteLine("Array after quick sort procedure:");
-            for(int i = 0; i<Array.Length; i++)
+            public void PrintArray()
             {
-                Console.WriteLine(Array[i]);
+                Console.Write("\nArray:");
+                for (int i = 0; i < Array.Length; i++)
+                {
+                    Console.Write(Array[i] + ",");
+                }
             }
 
-            Console.ReadKey();
+            static void Main(string[] args)
+            {
+                Console.WriteLine("Enter the size of the array: ");
+                int n = Convert.ToInt32(Console.ReadLine());
+
+                int[] array = new int[n];
+
+                Console.WriteLine("Enter the elements of the array: ");
+                for (int i = 0; i < n; i++)
+                {
+                    array[i] = Convert.ToInt32(Console.ReadLine());
+                }
+
+                Array = array;
+
+                ClassQuickSort q = new ClassQuickSort();
+                q.QuickSort(0, Array.Length - 1);
+                q.PrintArray();
+                Console.ReadKey();
+            }
         }
     }
 }
