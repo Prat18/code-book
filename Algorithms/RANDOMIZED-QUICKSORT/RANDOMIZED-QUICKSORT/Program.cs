@@ -12,17 +12,6 @@ namespace RANDOMIZED_QUICKSORT
 
         public class ClassRandomizedQuicksort
         {
-            public int RandomizedPartition(int p, int r)
-            {
-                Random rnd = new Random();
-                //Console.WriteLine(p + "<---" + "--->" + r);
-                int i = p + rnd.Next(100) % (r - p);
-                Swap(r, i);
-                Console.Write("\nAfter randomizing at index " + i + "\n");
-                PrintArray();
-                return Partition(p, r);
-            }
-
             public void RandomizedQuicksort(int p, int r)
             {
                 if (p < r)
@@ -31,6 +20,29 @@ namespace RANDOMIZED_QUICKSORT
                     RandomizedQuicksort(p, q - 1);
                     RandomizedPartition(q + 1, r);
                 }
+            }
+
+            public int RandomizedPartition(int p, int r)
+            {
+                Random rnd = new Random();
+                int i = p;
+                //Console.WriteLine(p + "<---" + "--->" + r);
+                if (r > p)
+                {
+                    i = rnd.Next(p, r);
+                }
+                else if(p > r)
+                {
+                    i = rnd.Next(r, p);
+                }
+                else
+                {
+                    i = r;
+                }
+                Swap(r, i);
+                Console.Write("\nAfter randomizing at index " + i + "\n");
+                PrintArray();
+                return Partition(p, r);
             }
 
             public int Partition(int p, int r)
