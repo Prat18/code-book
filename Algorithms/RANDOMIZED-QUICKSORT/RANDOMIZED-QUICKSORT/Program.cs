@@ -29,11 +29,11 @@ namespace RANDOMIZED_QUICKSORT
                 //Console.WriteLine(p + "<---" + "--->" + r);
                 if (r > p)
                 {
-                    i = rnd.Next(p, r);
+                    i = rnd.Next(p, r+1);
                 }
                 else if(p > r)
                 {
-                    i = rnd.Next(r, p);
+                    i = rnd.Next(r+1, p);
                 }
                 else
                 {
