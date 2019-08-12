@@ -25,20 +25,9 @@ namespace RANDOMIZED_QUICKSORT
             public int RandomizedPartition(int p, int r)
             {
                 Random rnd = new Random();
-                int i = p;
-                //Console.WriteLine(p + "<---" + "--->" + r);
-                if (r > p)
-                {
-                    i = rnd.Next(p, r+1);
-                }
-                else if(p > r)
-                {
-                    i = rnd.Next(r+1, p);
-                }
-                else
-                {
-                    i = r;
-                }
+                int i;
+                if (r < p) i = rnd.Next(p, r);
+                else return Partition(p, r);
                 Swap(r, i);
                 Console.Write("\nAfter randomizing at index " + i + "\n");
                 PrintArray();
