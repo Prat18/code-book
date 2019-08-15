@@ -11,7 +11,6 @@ namespace Linked_List
         public class Node
         {
             public Node next;
-            //public Node prev;
             public int data;
         }
 
@@ -30,24 +29,19 @@ namespace Linked_List
                 }
             }
 
-            public int ListSearch(int data)
+            public Node ListSearch(int data)
             {
-                Node current = Head;
-                int match = 0;
+                Node current = Head, prev = Head;
 
                 while (current != null)
                 {
-                    if(current.data == data)
-                    {
-                        Console.WriteLine("Macth successful!");
-                        Console.WriteLine("Next: " + current.next);
-                        Console.WriteLine("Data: " + current.data);
-                        match = 1;
-                    }
+                    if(current.data == data) return prev;
+
+                    prev = current;
                     current = current.next;
                 }
 
-                return match;
+                return null;
             }
 
             public void InsertFirst(int data)
@@ -73,8 +67,11 @@ namespace Linked_List
                 }
                 else
                 {
-                    Node toAdd = new Node();
-                    toAdd.data = data;
+                    Node toAdd = new Node
+                    {
+                        data = data,
+                        next = null
+                    };
 
                     Node current = Head;
                     while(current.next != null)
@@ -88,7 +85,18 @@ namespace Linked_List
 
             public void ListDelete(int data)
             {
+                Node node = ListSearch(data);
 
+                if (node == null) Console.WriteLine("Data not found");
+                else
+                {
+                    if(node == Head && node.data == data)
+                    {
+                        if (node.next == null) Head = null;
+                        else Head = node.next;
+                    }else if(node.next.next == null) node.next = null;
+                    else node.next = node.next.next;
+                }
             }
         }
 
@@ -96,12 +104,14 @@ namespace Linked_List
         {
             ClassLinkedList L = new ClassLinkedList();
 
-            int choice, key, data, match;
+            int choice, key, data;
+            Node match;
 
             while (true)
             {
                 Console.WriteLine("Enter your choice: \n1. Print all nodes\n2. Search Through Linked List\n3. Insert at front\n4. Insert at last\n5. Delete\n6. EXIT\n");
                 choice = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("\n");
 
                 if(choice == 1)
                 {
@@ -113,7 +123,14 @@ namespace Linked_List
                     key = Convert.ToInt32(Console.ReadLine());
 
                     match = L.ListSearch(key);
-                    if (match == 0) Console.WriteLine("No match found.");
+                    if (match == null) Console.WriteLine("No match found.");
+                    else
+                    {
+                        Console.WriteLine("Macth successful!");
+                        if (match.next.next == null) Console.WriteLine("Next: " + "NULL");
+                        else Console.WriteLine("Next: " + match.next.next.data);
+                        Console.WriteLine("Data: " + match.data);
+                    }
                 }
                 else if(choice == 3)
                 {
