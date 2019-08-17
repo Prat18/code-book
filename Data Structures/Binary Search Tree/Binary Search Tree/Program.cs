@@ -8,26 +8,35 @@ namespace Binary_Search_Tree
 {
     class Program
     {
+        public static Node Root { get; set; }
+
         public class Node
         {
-            public Node leftChild;
-            public Node rightChild;
-            public Node parentNode;
+            public Node left;
+            public Node right;
+            public Node parent;
             public int key;
         }
 
         public class BST
         {
-            private Node Root;
+            public Node Root;
 
-            public void InorderTreeWalk()
+            public void InorderTreeWalk(Node x)
             {
-
+                if (x != null)
+                {
+                    InorderTreeWalk(x.left);
+                    Console.WriteLine(x.key);
+                    InorderTreeWalk(x.right);
+                }
             }
 
-            public void TreeSearch()
+            public Node TreeSearch(int key, Node x)
             {
-
+                if (x == null && key == x.key) return x;
+                if (key < x.key) return TreeSearch(key, x.left);
+                else return TreeSearch(key, x.right);
             }
 
             public void IterativeTreeSearch()
@@ -50,9 +59,27 @@ namespace Binary_Search_Tree
 
             }
 
-            public void TreeInsert()
+            public void TreeInsert(int key)
             {
+                Node toAdd = new Node
+                {
+                    key = key
+                };
 
+                Node y = null;
+                Node x = Root;
+
+                while(x != null)
+                {
+                    y = x;
+                    if (toAdd.key < x.key) x = x.left;
+                    else x = x.right;
+                }
+
+                toAdd.parent = y;
+                if (y == null) Root = toAdd;
+                else if (toAdd.key < y.key) y.left = toAdd;
+                else y.right = toAdd;
             }
 
             public void Transplant()
@@ -74,16 +101,27 @@ namespace Binary_Search_Tree
 
             while (true)
             {
-                Console.WriteLine("Enter your choice: \n1. Inorder Tree Walk\n2. Tree Search\n3. Iterative Tree Search\n4. Tree Maximum\n5. Tree Minimum\n6. Tree Successor\n7. TreeInsert\n8. Transplant\n9. Tree Delete\n10. EXIT");
+                Console.WriteLine("Enter your choice: \n1. Inorder Tree Walk\n2. Tree Search\n3. Iterative Tree Search\n4. Tree Maximum\n5. Tree Minimum\n6. Tree Successor\n7. Tree Insert\n8. Transplant\n9. Tree Delete\n10. EXIT");
                 choice = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("\n");
 
                 if(choice == 1)
                 {
-                    B.InorderTreeWalk();
+                    B.InorderTreeWalk(B.Root);
                 }else if (choice == 2)
                 {
-                    B.TreeSearch();
+                    Console.WriteLine("Enter the key you want to search: ");
+                    int key = Convert.ToInt32(Console.ReadLine());
+                    Node match = B.TreeSearch(key, B.Root);
+
+                    if (match == null) Console.WriteLine("No such key exist.");
+                    else
+                    {
+                        Console.WriteLine("key: " + match.key);
+                        if (match.parent != null) Console.WriteLine("parent key: " + match.parent.key);
+                        if (match.left != null) Console.WriteLine("Left child key: " + match.left.key);
+                        if (match.right != null) Console.WriteLine("right child key: " + match.right.key);
+                    }
                 }
                 else if (choice == 3)
                 {
@@ -103,7 +141,9 @@ namespace Binary_Search_Tree
                 }
                 else if (choice == 7)
                 {
-                    B.TreeInsert();
+                    Console.WriteLine("Enter the key you want to insert: ");
+                    int key = Convert.ToInt32(Console.ReadLine());
+                    B.TreeInsert(key);
                 }
                 else if (choice == 8)
                 {
