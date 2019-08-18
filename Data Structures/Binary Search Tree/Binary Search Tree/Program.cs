@@ -34,29 +34,43 @@ namespace Binary_Search_Tree
 
             public Node TreeSearch(int key, Node x)
             {
-                if (x == null && key == x.key) return x;
+                if (x == null || key == x.key) return x;
                 if (key < x.key) return TreeSearch(key, x.left);
                 else return TreeSearch(key, x.right);
             }
 
-            public void IterativeTreeSearch()
+            public Node IterativeTreeSearch(int key, Node x)
             {
-
+                while(x != null && key != x.key)
+                {
+                    if (key < x.key) x = x.left;
+                    else x = x.right;
+                }
+                return x;
             }
 
-            public void TreeMaximum()
+            public Node TreeMaximum(Node x)
             {
-
+                while (x.right != null) x = x.right;
+                return x;
             }
 
-            public void TreeMinimum()
+            public Node TreeMinimum(Node x)
             {
-
+                while (x.left != null) x = x.left;
+                return x;
             }
 
-            public void TreeSuccessor()
+            public Node TreeSuccessor(Node x)
             {
-
+                if (x.right != null) return TreeMinimum(x.right);
+                Node y = x.parent;
+                while(y != null && x == y.right)
+                {
+                    x = y;
+                    y = y.parent;
+                }
+                return y;
             }
 
             public void TreeInsert(int key)
@@ -82,14 +96,32 @@ namespace Binary_Search_Tree
                 else y.right = toAdd;
             }
 
-            public void Transplant()
+            public void Transplant(Node u, Node v)
             {
-
+                if (u.parent == null) Root = v;
+                else if (u == u.parent.left) u.parent.left = v;
+                else u.parent.right = v;
+                if (v != null) v.parent = u.parent;
             }
 
-            public void TreeDelete()
+            public void TreeDelete(Node z)
             {
+                if (z.left == null) Transplant(z, z.right);
+                else if (z.right == null) Transplant(z, z.left);
+                else
+                {
+                    Node y = TreeMinimum(z.right);
+                    if(y.parent != z)
+                    {
+                        Transplant(y, y.right);
+                        y.right = z.right;
+                        y.right.parent = y;
+                    }
 
+                    Transplant(z, y);
+                    y.left = z.left;
+                    y.left.parent = y;
+                }
             }
         }
 
@@ -125,19 +157,39 @@ namespace Binary_Search_Tree
                 }
                 else if (choice == 3)
                 {
-                    B.IterativeTreeSearch();
+                    Console.WriteLine("Enter the key you want to search iteratively: ");
+                    int key = Convert.ToInt32(Console.ReadLine());
+                    Node match = B.IterativeTreeSearch(key, B.Root);
+
+                    if (match == null) Console.WriteLine("No such key exist.");
+                    else
+                    {
+                        Console.WriteLine("key: " + match.key);
+                        if (match.parent != null) Console.WriteLine("parent key: " + match.parent.key);
+                        if (match.left != null) Console.WriteLine("Left child key: " + match.left.key);
+                        if (match.right != null) Console.WriteLine("right child key: " + match.right.key);
+                    }
                 }
                 else if (choice == 4)
                 {
-                    B.TreeMaximum();
+                    Node max = B.TreeMaximum(B.Root);
+                    if (max != null) Console.WriteLine("MAXIMUM: " + max.key);
+                    else Console.WriteLine("Tree is empty.");
                 }
                 else if (choice == 5)
                 {
-                    B.TreeMinimum();
+                    Node min = B.TreeMinimum(B.Root);
+                    if (min != null) Console.WriteLine("MINIMUM: " + min.key);
+                    else Console.WriteLine("Tree is empty.");
                 }
                 else if (choice == 6)
                 {
-                    B.TreeSuccessor();
+                    Console.WriteLine("Enter the key you want to find successor of: ");
+                    int key = Convert.ToInt32(Console.ReadLine());
+                    Node x = B.TreeSearch(key, B.Root);
+                    Node successor = B.TreeSuccessor(x);
+                    if (successor != null) Console.WriteLine("The successor of key " + key + " is " + successor.key);
+                    else Console.WriteLine("successor don't exist.");
                 }
                 else if (choice == 7)
                 {
@@ -147,11 +199,16 @@ namespace Binary_Search_Tree
                 }
                 else if (choice == 8)
                 {
-                    B.Transplant();
+                    //B.Transplant();
                 }
                 else if (choice == 9)
                 {
-                    B.TreeDelete();
+                    Console.WriteLine("Enter the key you want to delete: ");
+                    int key = Convert.ToInt32(Console.ReadLine());
+                    Node z = B.TreeSearch(key, B.Root);
+
+                    if (z != null) B.TreeDelete(z);
+                    else Console.WriteLine("No such key exist.");
                 }
                 else break;
             }
