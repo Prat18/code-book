@@ -1,0 +1,4 @@
+﻿  Postfix Evaluation.cpp
+D:\crackingthecodeinterview\code-book\DS & Algo\Stack Application\Postfix Evaluation\Postfix Evaluation\Postfix Evaluation\Intopost.h(22,13): warning C4018: '<': signed/unsigned mismatch
+D:\crackingthecodeinterview\code-book\DS & Algo\Stack Application\Postfix Evaluation\Postfix Evaluation\Postfix Evaluation\Postfix Evaluation.cpp(9,23): warning C4018: '<': signed/unsigned mismatch
+  Postfix Evaluation.vcxproj -> D:\crackingthecodeinterview\code-book\DS & Algo\Stack Application\Postfix Evaluation\Postfix Evaluation\Debug\Postfix Evaluation.exe
