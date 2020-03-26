@@ -25,6 +25,8 @@ public:
     Node<T>* RLRotation(Node<T>* node);
     Node<T>* RecursiveInsert(int key) { return RecursiveInsert(root, key); }
     Node<T>* RecursiveInsert(Node<T>* node, int key);
+    T DeleteNode(T key) { return DeleteNode(root, key); }
+    T DeleteNode(Node<T>* node, T key);
     void Display() { Display(root); cout << endl; }
     void Display(Node<T>* node);
 };
@@ -49,76 +51,74 @@ int AVLTree<T>::BalanceFactor(Node<T>* node) {
 
 template <class T>
 Node<T>* AVLTree<T>::LLRotation(Node<T>* node) {
-    Node<T>* A = node->rchild;
-    Node<T>* B = node->lchild->rchild;
-    Node<T>* C = node->lchild;
+    Node<T>* lrc = node->lchild->rchild;
+    Node<T>* lc = node->lchild;
 
     node->lchild->rchild = node;
-    node->lchild = B;
+    node->lchild = lrc;
 
     node->height = NodeHeight(node);
-    node->height = NodeHeight(C);
+    lc->height = NodeHeight(lc);
 
-    if (root == node) root = C;
-    return C;
+    if (root == node) root = lc;
+    return lc;
 }
 
 template <class T>
 Node<T>* AVLTree<T>::LRRotation(Node<T>* node) {
-    Node<T>* A = node->lchild->rchild->lchild;
-    Node<T>* B = node->lchild->rchild->rchild;
-    Node<T>* D = node->lchild;
-    Node<T>* C = node->lchild->rchild;
+    Node<T>* lc = node->lchild;
+    Node<T>* lrc = node->lchild->rchild;
+    
+    lc->rchild = lrc->lchild;
+    node->lchild = lrc->rchild;
 
-    C->lchild = node->lchild;
-    C->rchild = node;
-    node->lchild = B;
-    D->rchild = A;
+    lrc->lchild = lc;
+    lrc->rchild = node;
 
-    D->height = NodeHeight(D);
+    lc->height = NodeHeight(lc);
     node->height = NodeHeight(node);
-    C->height = NodeHeight(C);
+    lrc->height = NodeHeight(lrc);
 
-    if (node == root) root = C;
 
-    return C;
+    if (node == root) root = lrc;
+
+    return lrc;
 }
 
 template <class T>
 Node<T>* AVLTree<T>::RRRotation(Node<T>* node) {
-    Node<T>* A = node->lchild;
-    Node<T>* B = node->rchild->lchild;
-    Node<T>* C = node->rchild;
+    Node<T>* rlc = node->rchild->lchild;
+    Node<T>* rc = node->rchild;
 
     node->rchild->lchild = node;
-    node->rchild = B;
+    node->rchild = rlc;
 
     node->height = NodeHeight(node);
-    node->height = NodeHeight(C);
+    rc->height = NodeHeight(rc);
 
-    if (root == node) root = C;
-    return C;
+    if (root == node) root = rc;
+    return rc;
 }
 
 template <class T>
 Node<T>* AVLTree<T>::RLRotation(Node<T>* node) {
-    Node<T>* A = node->rchild->lchild->rchild;
-    Node<T>* B = node->rchild->lchild->lchild;
-    Node<T>* D = node->rchild;
-    Node<T>* C = node->rchild->lchild;
+    Node<T>* rc = node->rchild;
+    Node<T>* rlc = node->rchild->lchild;
 
-    C->rchild = node->rchild;
-    C->lchild = node;
-    node->rchild = B;
-    D->lchild = A;
+    rc->lchild = rlc->rchild;
+    node->rchild = rlc->lchild;
 
-    D->height = NodeHeight(D);
+    rlc->rchild = rc;
+    rlc->lchild = node;
+
+    rc->height = NodeHeight(rc);
     node->height = NodeHeight(node);
-    C->height = NodeHeight(C);
+    rlc->height = NodeHeight(rlc);
 
-    if (node == root) root = C;
 
-    return C;
+    if (node == root) root = rlc;
+
+    return rlc;
 }
 
 template <class T>
@@ -153,20 +153,25 @@ Node<T>* AVLTree<T>::RecursiveInsert(Node<T>* node, int key) {
     return node;
 }
 
+template <class T>
+T AVLTree<T>::DeleteNode(Node<T>* node, T key) {
+    
+}
+
 int main()
 {
     std::cout << "Hello World!\n";
     
     AVLTree<int> t;
     t.root = t.RecursiveInsert(1);
-    t.RecursiveInsert(2);
     t.RecursiveInsert(3);
-    t.RecursiveInsert(4);
-    t.RecursiveInsert(5);
-    t.RecursiveInsert(6);
-    t.RecursiveInsert(7);
-    t.RecursiveInsert(8);
-    t.RecursiveInsert(9);
-    t.RecursiveInsert(10);
+    t.RecursiveInsert(2);
+    //t.RecursiveInsert(1);
+    //t.RecursiveInsert(5);
+    //t.RecursiveInsert(6);
+    //t.RecursiveInsert(7);
+    //t.RecursiveInsert(8);
+    //t.RecursiveInsert(9);
+    //t.RecursiveInsert(10);
     t.Display();
 }
