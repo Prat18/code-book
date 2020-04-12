@@ -48,8 +48,9 @@ int main()
             }
         }
         included[k] = 1;
-        if (Find(edges[0][k]) != Find(edges[1][k])) {
-            Union(edges[0][k], edges[1][k]);
+        int u = edges[0][k], v = edges[1][k];
+        if (Find(u) != Find(v)) {
+            Union(Find(u), Find(v));
             tree[0][i] = edges[0][k];
             tree[1][i] = edges[1][k];
             i++;
