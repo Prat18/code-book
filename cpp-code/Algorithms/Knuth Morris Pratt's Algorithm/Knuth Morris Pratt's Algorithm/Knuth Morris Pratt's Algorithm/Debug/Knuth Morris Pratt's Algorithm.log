@@ -1,0 +1,5 @@
+﻿  Knuth Morris Pratt's Algorithm.cpp
+D:\code-book\cpp-code\Algorithms\Knuth Morris Pratt's Algorithm\Knuth Morris Pratt's Algorithm\Knuth Morris Pratt's Algorithm\Knuth Morris Pratt's Algorithm.cpp(9,11): warning C4018: '<': signed/unsigned mismatch
+D:\code-book\cpp-code\Algorithms\Knuth Morris Pratt's Algorithm\Knuth Morris Pratt's Algorithm\Knuth Morris Pratt's Algorithm\Knuth Morris Pratt's Algorithm.cpp(31,11): warning C4018: '<': signed/unsigned mismatch
+D:\code-book\cpp-code\Algorithms\Knuth Morris Pratt's Algorithm\Knuth Morris Pratt's Algorithm\Knuth Morris Pratt's Algorithm\Knuth Morris Pratt's Algorithm.cpp(56,20): warning C4018: '<': signed/unsigned mismatch
+  Knuth Morris Pratt's Algorithm.vcxproj -> D:\code-book\cpp-code\Algorithms\Knuth Morris Pratt's Algorithm\Knuth Morris Pratt's Algorithm\Debug\Knuth Morris Pratt's Algorithm.exe
